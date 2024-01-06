@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Brand;
+use App\Models\CarModel;
+
 
 class ProductController extends Controller
 {
@@ -13,8 +16,11 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::orderBy('created_at', 'asc')->get();
-    
-        return view('admin.productlist', ['products' => $products]);
+        $brands = Brand::all();
+        $models = CarModel::all();
+
+
+        return view('admin.productlist',compact('products', 'brands','models'));
     }
 
     /**

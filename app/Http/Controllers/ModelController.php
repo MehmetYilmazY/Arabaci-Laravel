@@ -2,25 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\CarModel;
 use App\Models\Brand;
-use Illuminate\Support\Facades\Hash;
 
 
-class UserController extends Controller
+class ModelController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $users = User::orderBy('created_at', 'asc')->get();
+        $models = CarModel::all();
         $brands = Brand::all();
 
-    
-        return view('admin.userlist',compact('users', 'brands'));
+        return view('admin.modellist', compact('models', 'brands'));
     }
 
     /**
@@ -28,8 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.userlist');
-
+        return view('admin.modellist');
     }
 
     /**
@@ -41,19 +37,21 @@ class UserController extends Controller
             // Form verilerini al
             $data = $request->validate([
                 'name' => 'required|string|max:255',
-                'email' => 'required|email|unique:users,email',
-                'password' => 'required|string|min:8',
-                'userType' => 'required|in:user,admin',
+                'brand' => 'required',
             ]);
     
-            // Şifreyi bcrypt kullanarak şifrele
-            $data['password'] = bcrypt($data['password']);
+            // İsimle belirtilen markanın ID'sini al
+            $brand = Brand::where('name', $data['brand'])->first();
     
-            // Kullanıcıyı oluştur ve veritabanına kaydet
-            User::create($data);
+            // Markanın varlığını kontrol et
+            if (!$brand) {
+                throw new \Exception('Seçilen marka mevcut değil.');
+            }
     
-            // Kullanıcı oluşturulduktan sonra index sayfasına yönlendir
-            return redirect()->route('admin.userlist')->with('success', 'Kullanıcı başarıyla oluşturuldu.');
+            CarModel::create($data);
+    
+            // Kullanıcı oluşturulduktan sonra model sayfasına yönlendir
+            return redirect()->route('admin.modellist')->with('success', 'Model başarıyla oluşturuldu.');
         } catch (\Exception $e) {
             // Kullanıcı oluşturma sırasında bir hata oluşursa
             return redirect()->back()->withInput()->withErrors(['error' => $e->getMessage()]);
@@ -73,10 +71,10 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $user = User::findOrFail($id);
+        $models = CarModel::findOrFail($id);
 
         // Edit view'ini göster
-        return view('admin.users.edit', compact('user'));
+        return view('admin.modellist.edit', compact('models'));
     }
 
     /**
@@ -86,19 +84,18 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $id,
-            'userType' => 'required|in:user,admin',
+            'brand' => 'required',
         ]);
 
-        $user = User::findOrFail($id);
+        $models = CarModel::findOrFail($id);
 
-        $user->update([
+        $models->update([
             'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'userType' => $request->input('userType'),
+            'brand' => $request->input('brand'),
+
         ]);
 
-        return redirect()->route('users.index')->with('success', 'Kullanıcı başarıyla güncellendi.');
+        return redirect()->route('admin.modellist')->with('success', 'Kullanıcı başarıyla güncellendi.');
     }
 
     /**
@@ -106,11 +103,12 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        $user = User::findOrFail($id);
+        $models = CarModel::findOrFail($id);
 
         // Kullanıcıyı sil
-        $user->delete();
+        $models->delete();
 
-        return redirect()->route('users.index')->with('success', 'Kullanıcı başarıyla silindi.');
+        return redirect()->route('admin.modellist')->with('success', 'Kullanıcı başarıyla silindi.');    
     }
-}
+    
+    }

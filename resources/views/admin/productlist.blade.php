@@ -24,8 +24,8 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Başlık</th>
-                    <th>Ürün</th>
                     <th>Marka</th>
                     <th>Model</th>
                     <th>Yıl</th>
@@ -45,7 +45,7 @@
                         <td>{{ $product->year }}</td>
                         <td>{{ $product->kms }}</td>
                         <td>
-                            <img src="{{ $product->image }}" alt="Ürün Görseli" style="max-width: 100px; max-height: 100px;">
+                            <img src="{{ $product->image }}" alt="Ürün Görseli" style="max-width: 50px; max-height: 70px;">
                         </td>                        <td>
                             <!-- Düzenleme Butonu -->
                             <a href="#" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editproductModal{{ $product->id }}">Düzenle</a>
@@ -73,24 +73,33 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- Ürün düzenleme formu -->
                     <form method="post" action="{{ route('products.update', $product->id) }}">
                         @csrf
                         @method('PUT')
-
+                    
                         <div class="mb-3">
                             <label for="title" class="form-label">Başlık</label>
                             <input type="text" class="form-control" id="title" name="title" value="{{ $product->title }}" required>
                         </div>
-        
-                        <div class="mb-3">
-                            <label for="brand" class="form-label">Marka</label>
-                            <input type="text" class="form-control" id="brand" name="brand" value="{{ $product->brand }}" required>
-                        </div>
 
                         <div class="mb-3">
+                            <label for="brand" class="form-label">Marka</label>
+                            <select class="form-select" id="brand" name="brand" required>
+                                <option value="" selected disabled>Marka Seçiniz</option>
+                                @foreach($brands as $brand)
+                                    <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+        
+                        <div class="mb-3">
                             <label for="model" class="form-label">Model</label>
-                            <input type="text" class="form-control" id="model" name="model" value="{{ $product->model }}" required>
+                            <select class="form-select" id="model" name="model" required>
+                                <option value="" selected disabled>Model Seçiniz</option>
+                                @foreach($models as $model)
+                                    <option value="{{ $model->name }}">{{ $brand->name }} -> {{ $model->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
         
                         <div class="mb-3">
@@ -184,12 +193,22 @@
 
                 <div class="mb-3">
                     <label for="brand" class="form-label">Marka</label>
-                    <input type="text" class="form-control" id="brand" name="brand" required>
+                    <select class="form-select" id="brand" name="brand" required>
+                        <option value="" selected disabled>Marka Seçiniz</option>
+                        @foreach($brands as $brand)
+                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="mb-3">
                     <label for="model" class="form-label">Model</label>
-                    <input type="text" class="form-control" id="model" name="model" required>
+                    <select class="form-select" id="model" name="model" required>
+                        <option value="" selected disabled>Model Seçiniz</option>
+                        @foreach($models as $model)
+                            <option value="{{ $model->id }}">{{ $model->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="mb-3">
@@ -252,4 +271,8 @@
           </div>
         </div>
       </div>
+@endsection
+
+@section('scripts')
+
 @endsection
