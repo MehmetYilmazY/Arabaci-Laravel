@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,10 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/admin', function () {
-    return view('admin');
-});
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.admin');
+Route::resource('users', UserController::class);
+Route::get('/admin/userlist', [UserController::class, 'index'])->name('admin.userlist');
+Route::resource('products', ProductController::class);
+Route::get('/admin/productlist', [ProductController::class, 'index'])->name('admin.productlist');
