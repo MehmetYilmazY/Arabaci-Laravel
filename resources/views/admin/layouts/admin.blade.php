@@ -37,9 +37,9 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                    <i class="fas fa-solid fa-car"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Tatilci <sup>v2</sup></div>
+                <div class="sidebar-brand-text mx-3">Arabacı <sup>v2</sup></div>
             </a>
 
             <!-- Divider -->
@@ -70,7 +70,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="#">Ürünler</a>
+                        <a class="collapse-item" href="/products">Ürünler</a>
                         <a class="collapse-item" href="#">Cards</a>
                     </div>
                 </div>
@@ -179,7 +179,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Tatil Bağımlısı 2024</span>
+                        <span>Copyright &copy; Arabacı 2024</span>
                     </div>
                 </div>
             </footer>

@@ -30,7 +30,7 @@
                     <th>Model</th>
                     <th>Yıl</th>
                     <th>KM</th>
-                    <th>Renk</th>
+                    <th>Görsel</th>
                     <th>İşlemler</th>
                     <!-- İhtiyaca göre daha fazla sütun ekleyin veya çıkarın -->
                 </tr>
@@ -44,8 +44,9 @@
                         <td>{{ $product->model }}</td>
                         <td>{{ $product->year }}</td>
                         <td>{{ $product->kms }}</td>
-                        <td>{{ $product->color }}</td>
                         <td>
+                            <img src="{{ $product->image }}" alt="Ürün Görseli" style="max-width: 100px; max-height: 100px;">
+                        </td>                        <td>
                             <!-- Düzenleme Butonu -->
                             <a href="#" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editproductModal{{ $product->id }}">Düzenle</a>
 
