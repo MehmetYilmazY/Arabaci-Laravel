@@ -23,7 +23,7 @@
                     <p><strong>Motor:</strong> {{ $product->engine }}</p>
                     <p><strong>Araç Tipi:</strong> {{ $product->carType }}</p>
                     <p><strong>Beygir Gücü:</strong> {{ $product->horsePower }}</p>
-                    <p><strong>Renk:</strong> {{ $product->color }}</p>
+                    <p><strong>Renk:</strong> <div class="color-box" style="background-color: {{ $product->color }}; width: 120px; height: 30px;"></div> </p>
                 </div>
             </div>
         </div>

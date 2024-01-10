@@ -144,7 +144,7 @@ class ProductController extends Controller
 
     public function showAllProducts()
     {
-        $products = Product::all(); // Tüm ürünleri al
+        $products = Product::paginate(5);
 
         return view('allcars', compact('products'));
     }

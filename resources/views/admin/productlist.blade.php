@@ -87,7 +87,7 @@
                             <select class="form-select" id="brand" name="brand" required>
                                 <option value="" selected disabled>Marka Seçiniz</option>
                                 @foreach($brands as $brand)
-                                    <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                    <option value="{{ $brand->name }}">{{ $brand->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -115,8 +115,18 @@
                         <div class="mb-3">
                             <label for="engine" class="form-label">Motor Hacmi</label>
                             <select class="form-select" id="engine" name="engine" required>
+                                <option value="Elektrikli">Elektrik</option>
+                                <option value="900">0.9</option>
+                                <option value="1000">1.0</option>
+                                <option value="1200">1.2</option>
+                                <option value="1400">1.4</option>
                                 <option value="1600">1.6</option>
                                 <option value="2000">2.0</option>
+                                <option value="2200">2.2</option>
+                                <option value="2400">2.4</option>
+                                <option value="2600">2.6</option>
+                                <option value="5000">5.0</option>
+                                <option value="5'ten Yüksek">5.0'dan yüksek</option>
                             </select>
                         </div>
         
@@ -196,7 +206,7 @@
                     <select class="form-select" id="brand" name="brand" required>
                         <option value="" selected disabled>Marka Seçiniz</option>
                         @foreach($brands as $brand)
-                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                            <option value="{{ $brand->name }}">{{ $brand->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -206,7 +216,7 @@
                     <select class="form-select" id="model" name="model" required>
                         <option value="" selected disabled>Model Seçiniz</option>
                         @foreach($models as $model)
-                            <option value="{{ $model->id }}">{{ $model->name }}</option>
+                            <option value="{{ $model->name }}">{{ $model->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -224,9 +234,18 @@
                 <div class="mb-3">
                     <label for="engine" class="form-label">Motor Hacmi</label>
                     <select class="form-select" id="engine" name="engine" required>
+                        <option value="Elektrikli">Elektrik</option>
+                        <option value="900">0.9</option>
+                        <option value="1000">1.0</option>
+                        <option value="1200">1.2</option>
+                        <option value="1400">1.4</option>
                         <option value="1600">1.6</option>
                         <option value="2000">2.0</option>
-                        <option value="elektrik">Electrik</option>
+                        <option value="2200">2.2</option>
+                        <option value="2400">2.4</option>
+                        <option value="2600">2.6</option>
+                        <option value="5000">5.0</option>
+                        <option value="5'ten Yüksek">5.0'dan yüksek</option>
                     </select>
                 </div>
 
