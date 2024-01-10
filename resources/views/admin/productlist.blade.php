@@ -226,6 +226,7 @@
                     <select class="form-select" id="engine" name="engine" required>
                         <option value="1600">1.6</option>
                         <option value="2000">2.0</option>
+                        <option value="elektrik">Electrik</option>
                     </select>
                 </div>
 
@@ -271,8 +272,4 @@
           </div>
         </div>
       </div>
-@endsection
-
-@section('scripts')
-
 @endsection
