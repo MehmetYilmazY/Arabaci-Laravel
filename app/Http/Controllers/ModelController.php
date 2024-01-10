@@ -110,5 +110,7 @@ class ModelController extends Controller
 
         return redirect()->route('admin.modellist')->with('success', 'Kullanıcı başarıyla silindi.');    
     }
+
+    use App\Models\Product;
     
     }

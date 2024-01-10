@@ -7,7 +7,6 @@ use App\Models\Product;
 use App\Models\Brand;
 use App\Models\CarModel;
 
-
 class ProductController extends Controller
 {
     /**
@@ -134,5 +133,32 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('products.index')->with('success', 'Kullanıcı başarıyla silindi.');
+    }
+
+    public function showHomePageProducts()
+    {
+        $products = Product::inRandomOrder()->take(8)->get();
+
+        return view('welcome', compact('products'));
+    }
+
+    public function showAllProducts()
+    {
+        $products = Product::all(); // Tüm ürünleri al
+
+        return view('allcars', compact('products'));
+    }
+
+    public function showProductDetails($id)
+    {
+        $product = Product::find($id);
+        $relatedProducts = Product::inRandomOrder()->take(4)->get();
+
+        
+        if (!$product) {
+            abort(404); // Eğer ürün bulunamazsa 404 hatası döndür
+        }
+
+        return view('detail', compact('product', 'relatedProducts'));
     }
 }

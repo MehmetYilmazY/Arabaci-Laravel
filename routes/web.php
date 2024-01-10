@@ -21,6 +21,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', [ProductController::class, 'showHomePageProducts'])->name('home');
+
+
 Auth::routes();
 
 Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.admin');
@@ -32,3 +35,5 @@ Route::resource('brands', CarController::class);
 Route::get('/admin/brands', [CarController::class, 'index'])->name('admin.brand');
 Route::resource('models', ModelController::class);
 Route::get('/admin/models', [ModelController::class, 'index'])->name('admin.modellist');
+Route::get('/tum-araclar', [ProductController::class, 'showAllProducts'])->name('allcars');
+Route::get('/arac-detaylari/{id}', [ProductController::class, 'showProductDetails'])->name('detail');

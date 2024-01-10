@@ -43,32 +43,40 @@
                 </div>
             </div>
         </section>
-        <!-- Image Showcases-->
-        <section class="showcase">
-            <div class="container-fluid p-0">
-                <div class="row g-0">
-                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
-                    <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-                        <h2>Rakipsiz Fiyatlar</h2>
-                        <p class="lead mb-0">When you use a theme created by Start Bootstrap, you know that the theme will look great on any device, whether it's a phone, tablet, or desktop the page will behave responsively!</p>
+        <!-- Product Showcases-->
+            <!-- Section-->
+            <section class="py-5">
+                <div class="container px-4 px-lg-5 mt-5">
+                    <h2 class="text-center mb-5">Önerdiğimiz Araçlar</h2>
+
+                    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                        @foreach($products as $product)
+                            <div class="col mb-5">
+                                <div class="card h-100">
+                                    <!-- Product image-->
+                                    <img class="card-img-top" src="{{ $product->image }}" alt="Product Image" />
+                                    <!-- Product details-->
+                                    <div class="card-body p-4">
+                                        <div class="text-center">
+                                            <!-- Product name-->
+                                            <h5 class="fw-bolder">{{ $product->title }}</h5>
+                                            <!-- Product price-->
+                                            ${{ $product->price }}
+                                        </div>
+                                    </div>
+                                    <!-- Product actions-->
+                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                        <div class="text-center">
+                                            <a class="btn btn-outline-dark mt-auto" href="{{ route('products.show', $product->id) }}">Detayları Gör</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
-                <div class="row g-0">
-                    <div class="col-lg-6 text-white showcase-img" style="background-image: url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
-                    <div class="col-lg-6 my-auto showcase-text">
-                        <h2>Sadece Güzel Kondisyonlu Araçlar</h2>
-                        <p class="lead mb-0">Newly improved, and full of great utility classes, Bootstrap 5 is leading the way in mobile responsive web development! All of the themes on Start Bootstrap are now using Bootstrap 5!</p>
-                    </div>
-                </div>
-                <div class="row g-0">
-                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
-                    <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-                        <h2>En Performanslı Canavarlar</h2>
-                        <p class="lead mb-0">Landing Page is just HTML and CSS with a splash of SCSS for users who demand some deeper customization options. Out of the box, just add your content and images, and your new landing page will be ready to go!</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
+
         <!-- Testimonials-->
         <section class="testimonials text-center bg-light">
             <div class="container">

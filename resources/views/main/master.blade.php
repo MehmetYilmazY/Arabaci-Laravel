@@ -19,9 +19,11 @@
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href="#!">Arabacı</a>
+                <a class="nav-link" href="{{ route('allcars') }}">Tüm Araçlar</a>
+                <a class="navbar-brand" href="/">Arabacı</a>
                 <a class="btn btn-sm btn-primary" href="/login">Yönetici Girişi</a>
             </div>
+
         </nav>
         
         @yield('content')
