@@ -11,7 +11,6 @@ Bu proje, Laravel kullanılarak geliştirilmiş bir 2. el araç yükleme uygulam
 ## Kurulum
 
 **Laravel Kurulumu:**
-   ```bash
    composer install
    cp .env.example .env
    php artisan key:generate
@@ -21,12 +20,10 @@ Bu proje, Laravel kullanılarak geliştirilmiş bir 2. el araç yükleme uygulam
 
 Gerekli Paketlerin Yüklenmesi:
 
-```bash
 composer require laravel/ui
 php artisan ui bootstrap --auth
 
 **Migrasyonlar ve Seederlar:**
-   ```bash
 php artisan migrate --seed
 
 Katkıda Bulunma
